@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+
+<script>
+    var app = document.querySelector("#app");
+    var viewModel = {};
+
+    // 즉시실행함수 사용 - 라이브러리 내부 로직을 사용자에게 노출하지않도록 유효범위 분리
+    // 파일 실행 후 render(), init() 호출 시 호출안됨 확인 가능
+    (function(){
+
+        function init(){
+            // 데이터의 변화를 라이브러리에서 감지해서 자동으로 변경해주는 것 - Vue의 핵심을 HTML로 구현한 코드
+            Object.defineProperty(viewModel, "str", {
+                get : function (){
+                    console.log(this.str);
+                },
+                set : function (value){
+                    render(value)
+
+                }
+            })
+        }
+
+        function render(value){
+            app.innerHTML = value;
+        }
+
+        init();
+
+    })();
+
+
+
+</script>
+
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+
+<script>
+    var app = document.querySelector("#app");
+    var str = '안녕하세요';
+
+    app.innerHTML = str;
+
+    str='안녕하세요!!';
+    // 아래 문장이 있어야만 innerHTML이 변경됨
+    app.innerHTML = str;
+
+</script>
+
+
+</html>
