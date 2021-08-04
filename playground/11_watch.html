@@ -7,6 +7,7 @@
 <body>
     <div id="app">
         {{ num }}
+        {{ doubleNum }}
         <button v-on:click="addNum">click</button>
     </div>
 </body>
@@ -19,10 +20,16 @@
         data : {
           num : 10
         },
-        // num의 변경 catch
+        // 단순한 값 변경 - validation 등 처리
+        computed : {
+            doubleNum : function(){
+                return this.num * 2;
+            }
+        },
+        // 매번 실행되는게 부담스러운 무거운 로직
         watch : {
             num : function (){
-                this.getNum();
+                this.fetchByCall();
             }
         },
         methods : {
@@ -31,6 +38,9 @@
             },
             getNum : function(){
                 console.log("getNum : " + this.num);
+            },
+            fetchByCall : function(){
+                //axios.get(url)
             }
         }
     })
