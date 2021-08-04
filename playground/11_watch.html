@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        {{ num }}
+        <button v-on:click="addNum">click</button>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+    new Vue({
+        el : '#app',
+        data : {
+          num : 10
+        },
+        // num의 변경 catch
+        watch : {
+            num : function (){
+                this.getNum();
+            }
+        },
+        methods : {
+            addNum : function(){
+                this.num ++;
+            },
+            getNum : function(){
+                console.log("getNum : " + this.num);
+            }
+        }
+    })
+</script>
+
+</html>
