@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <div id="app">
+        <!-- 이벤트명.enter 과 같이 eventModifier 처리 가능       -->
+        <input type="text" v-on:keyup.enter="logText" />
+
+    </div>
+</head>
+<body>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+
+    new Vue({
+        el:'#app',
+        methods:{
+            logText : function(){
+                console.log('hi');
+            }
+        }
+    })
+
+</script>
+</html>
