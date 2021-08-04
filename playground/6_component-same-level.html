@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!-- content -> Root -> header 순으로 데이터 넘기는 과정 -->
+    <div id="app">
+        <!-- 3. data pass (Root -> header) -->
+        <app-header v-bind:propsobj="obj"></app-header>
+
+        <!-- 1. data pass (content -> Root) -->
+        <app-content v-on:pass="receiveObj"></app-content>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+
+    var appHeader = {
+        template : '<div>{{propsobj.num}} and {{propsobj.str}}</div>',
+        props : ['propsobj']
+    }
+
+    var appContent = {
+        template : '<div>content<button v-on:click="passNum">pass</button></div>',
+        methods : {
+            passNum : function(){
+                this.$emit("pass",{num:10, str:"aa"})
+            }
+        }
+    }
+
+    new Vue({
+        el : '#app',
+        components : {
+            'app-header' : appHeader,
+            'app-content' : appContent
+        },
+        data : {
+            obj : {
+                num : 0,
+                str : ""
+            }
+        },
+        <!-- 2. data receive -->
+        methods : {
+            receiveObj: function(obj) {
+                this.obj.num = obj.num;
+                this.obj.str = obj.str;
+            }
+        }
+    })
+
+</script>
+
+
+</html>
