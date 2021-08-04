@@ -4,11 +4,21 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<style>
+    .warning{
+        color : red;
+    }
+</style>
 <body>
     <div id="app">
         {{ num }}
         {{ doubleNum }}
         <button v-on:click="addNum">click</button>
+
+        <!-- <div v-bind:class="{warning : isError}">-->
+        <div v-bind:class="errorCheck">
+            Hello
+        </div>
     </div>
 </body>
 
@@ -18,12 +28,16 @@
     new Vue({
         el : '#app',
         data : {
-          num : 10
+            num : 10,
+            isError : false
         },
         // 단순한 값 변경 - validation 등 처리
         computed : {
             doubleNum : function(){
                 return this.num * 2;
+            },
+            errorCheck : function(){
+                return this.isError? 'warning' : null;
             }
         },
         // 매번 실행되는게 부담스러운 무거운 로직
