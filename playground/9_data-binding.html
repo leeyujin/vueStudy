@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <p v-bind:id="uuid"> {{num}}</p>
+        <p v-bind:class="className"> {{doubleNum}} </p>
+
+        <!-- false 시 display:none; 처리, Dom 유지        -->
+        <div v-show="loading">
+            loading...
+        </div>
+        <!-- false 시 Dom에서 사라짐        -->
+        <div v-if="loading">
+            loading...
+        </div>
+        <div v-else>
+            logged in
+        </div>
+    </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el : '#app',
+        data : {
+            num : 10,
+            uuid : '123',
+            className : 'text-blue',
+            loading : true
+        },
+        computed : {
+            doubleNum : function(){
+                return this.num * 2
+            }
+        }
+    })
+
+</script>
+</html>
